@@ -23,5 +23,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Test / Tmp files
-foo/
+# Temporary / Example files
+.foo/
+.examples/
