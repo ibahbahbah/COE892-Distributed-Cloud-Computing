@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.rovers";
+option java_outer_classname = "RoversProto";
+option objc_class_prefix = "RVRP";
+
+service rovers {
+    rpc getMap (mapRequest) returns (mapReply) {}
+    rpc getCommandStream(commandStreamRequest) returns (commandStreamReply) {}
+    rpc getMineSerial(serialNumRequest) returns (serialNumReply) {}
+    rpc completedCommands(completedRequest) returns (completedReply) {}
+    rpc sendPin(pinRequest) returns (pinReply) {}
+}
+
+// Get Map Messages
+message mapRequest {
+    string id = 1;
+}
+message mapReply {
+    repeated string map = 1;
+    int32 rows = 2;
+    int32 cols = 3;
+}
+
+// Get Command Steam Messages
+message commandStreamRequest {
+    string id = 1;
+}
+message commandStreamReply {
+    string cmds = 1;
+}
+
+// Get Mine Serial Messages
+message serialNumRequest {
+    string id = 1;
+    int32 i = 2;
+    int32 j = 3;
+}
+message serialNumReply {
+    string serialNum = 1;
+}
+
+// 
+message completedRequest {
+    string id = 1;
+    int32 code = 2;
+}
+message completedReply {
+    string ack = 1;
+}
+
+//
+message pinRequest {
+    string id = 1;
+    string serialNum = 2;
+    string pin = 3;
+}
+message pinReply {
+    string ack = 1;
+}
